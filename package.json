@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "Eventify",
+=======
+  "name": "eventify",
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +14,11 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.5",
+<<<<<<< HEAD
+=======
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     "@hookform/resolvers": "^3.3.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-checkbox": "^1.0.4",

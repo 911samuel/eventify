@@ -1,4 +1,5 @@
 <div align="center">
+<<<<<<< HEAD
   <br />
     <a href="https://youtu.be/zgGhzuBZOQg" target="_blank">
       <img src="https://github.com/adrianhajdin/event_platform/assets/151519281/548975af-f0ed-4103-8834-fe93cf91862e" alt="Project Banner">
@@ -43,6 +44,24 @@ Built on Next.js 14, the events application stands as a comprehensive, full-stac
 If you're getting started and need assistance or face any bugs, join our active Discord community with over 27k+ members. It's a place where people help each other out.
 
 <a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+=======
+  <div>
+    <img src="https://img.shields.io/badge/-Next_JS_14-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="Next.js" />
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
+  </div>
+
+  <h3 align="center">A Full Stack Events App</h3>
+
+   <div align="center">
+     This project was developed using Next.js 14, TypeScript, and more.
+    </div>
+</div>
+
+## 🚨 Project Description
+
+This repository contains the code for a full-stack events application developed using Next.js 14. It serves as a comprehensive platform for managing events, spotlighting diverse events taking place globally. Featuring seamless payment processing through Stripe, users can purchase tickets for any event or even initiate and manage their own events.
+
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -99,6 +118,7 @@ Make sure you have the following installed on your machine:
 ```bash
 git clone https://github.com/your-username/your-project.git
 cd your-project
+<<<<<<< HEAD
 ```
 
 **Installation**
@@ -1368,3 +1388,5 @@ And if you're hungry for more than just a course and want to understand how we l
 </a>
 
 #
+=======
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430

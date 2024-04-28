@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import NavItems from "./NavItems"
 import MobileNav from "./MobileNav"
+=======
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import NavItems from "./NavItems";
+import MobileNav from "./MobileNav";
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
 
 const Header = () => {
   return (
@@ -14,7 +23,11 @@ const Header = () => {
             src="/assets/images/logo.svg"
             width={128}
             height={38}
+<<<<<<< HEAD
             alt="Eventify logo"
+=======
+            alt="eventify logo"
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
           />
         </Link>
 
@@ -38,6 +51,12 @@ const Header = () => {
       </div>
     </header>
   );
+<<<<<<< HEAD
 }
 
 export default Header
+=======
+};
+
+export default Header;
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
