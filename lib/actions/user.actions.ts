@@ -51,21 +51,39 @@ export async function deleteUser(clerkId: string) {
   try {
     await connectToDatabase()
 
+<<<<<<< HEAD
+    // Find user to delete
+=======
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     const userToDelete = await User.findOne({ clerkId })
 
     if (!userToDelete) {
       throw new Error('User not found')
     }
 
+<<<<<<< HEAD
+    // Unlink relationships
     await Promise.all([
+      // Update the 'events' collection to remove references to the user
+=======
+    await Promise.all([
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
       Event.updateMany(
         { _id: { $in: userToDelete.events } },
         { $pull: { organizer: userToDelete._id } }
       ),
 
+<<<<<<< HEAD
+      // Update the 'orders' collection to remove references to the user
       Order.updateMany({ _id: { $in: userToDelete.orders } }, { $unset: { buyer: 1 } }),
     ])
 
+    // Delete user
+=======
+      Order.updateMany({ _id: { $in: userToDelete.orders } }, { $unset: { buyer: 1 } }),
+    ])
+
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     const deletedUser = await User.findByIdAndDelete(userToDelete._id)
     revalidatePath('/')
 

@@ -12,7 +12,11 @@ export const connectToDatabase = async () => {
   cached.promise =
     cached.promise ||
     mongoose.connect(MONGODB_URI, {
+<<<<<<< HEAD
+      dbName: "Eventify",
+=======
       dbName: "eventify",
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
       bufferCommands: false,
     });
 

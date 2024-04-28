@@ -14,7 +14,11 @@ export const formatDateTime = (dateString: Date) => {
     weekday: "short", 
     month: "short", 
     day: "numeric", 
+<<<<<<< HEAD
+    hour: "numeric", 
+=======
     hour: "numeric",
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     minute: "numeric", 
     hour12: true, 
   };
@@ -22,12 +26,20 @@ export const formatDateTime = (dateString: Date) => {
   const dateOptions: Intl.DateTimeFormatOptions = {
     weekday: "short", 
     month: "short", 
+<<<<<<< HEAD
+    year: "numeric",
+=======
     year: "numeric", 
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     day: "numeric", 
   };
 
   const timeOptions: Intl.DateTimeFormatOptions = {
+<<<<<<< HEAD
+    hour: "numeric", 
+=======
     hour: "numeric",
+>>>>>>> 3b3e62e353fa9ce87cc03d4c98ec1cfc91a11430
     minute: "numeric", 
     hour12: true, 
   };
