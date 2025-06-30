@@ -21,17 +21,11 @@ export async function createUser(user: CreateUserParams) {
   }
 }
 
-export async function getUserById(userId: string) {
-  try {
-    await connectToDatabase()
-
-    const user = await User.findById(userId)
-
-    if (!user) throw new Error('User not found')
-    return JSON.parse(JSON.stringify(user))
-  } catch (error) {
-    handleError(error)
-  }
+export async function getUserById(clerkId: string) {
+  await connectToDatabase();
+  const user = await User.findOne({ clerkId });
+  if (!user) throw new Error("User not found");
+  return JSON.parse(JSON.stringify(user));
 }
 
 export async function updateUser(clerkId: string, user: UpdateUserParams) {

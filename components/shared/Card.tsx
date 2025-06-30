@@ -1,6 +1,6 @@
 import { IEvent } from '@/lib/database/models/event.model'
 import { formatDateTime } from '@/lib/utils'
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -12,9 +12,8 @@ type CardProps = {
   hidePrice?: boolean
 }
 
-const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
-  const { sessionClaims } = auth();
-  const userId = sessionClaims?.userId as string;
+const Card = async ({ event, hasOrderLink, hidePrice }: CardProps) => {
+  const { userId } = await auth();
 
   const isEventCreator = userId === event.organizer._id.toString();
 

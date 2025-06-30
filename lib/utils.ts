@@ -11,25 +11,25 @@ export function cn(...inputs: ClassValue[]) {
 
 export const formatDateTime = (dateString: Date) => {
   const dateTimeOptions: Intl.DateTimeFormatOptions = {
-    weekday: "short", 
-    month: "short", 
-    day: "numeric", 
+    weekday: "short",
+    month: "short",
+    day: "numeric",
     hour: "numeric",
-    minute: "numeric", 
-    hour12: true, 
+    minute: "numeric",
+    hour12: true,
   };
 
   const dateOptions: Intl.DateTimeFormatOptions = {
-    weekday: "short", 
-    month: "short", 
-    year: "numeric", 
-    day: "numeric", 
+    weekday: "short",
+    month: "short",
+    year: "numeric",
+    day: "numeric",
   };
 
   const timeOptions: Intl.DateTimeFormatOptions = {
     hour: "numeric",
-    minute: "numeric", 
-    hour12: true, 
+    minute: "numeric",
+    hour12: true,
   };
 
   const formattedDateTime: string = new Date(dateString).toLocaleString(
@@ -101,5 +101,18 @@ export function removeKeysFromQuery({
 
 export const handleError = (error: unknown) => {
   console.error(error);
-  throw new Error(typeof error === "string" ? error : JSON.stringify(error));
+  if (typeof error === "string") {
+    throw new Error(error);
+  } else if (typeof error === "object" && error !== null) {
+    const errorString = JSON.stringify(error);
+    if (errorString === "{}") {
+      // Try to get message property if exists
+      const message = (error as any).message;
+      throw new Error(message || "An unknown error occurred");
+    } else {
+      throw new Error(errorString);
+    }
+  } else {
+    throw new Error("An unknown error occurred");
+  }
 };

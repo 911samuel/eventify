@@ -7,7 +7,6 @@ import { handleError } from '../utils';
 import { connectToDatabase } from '../database';
 import Order from '../database/models/order.model';
 import Event from '../database/models/event.model';
-import {ObjectId} from 'mongodb';
 import User from '../database/models/user.model';
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
@@ -44,14 +43,30 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
   }
 }
 
+import { ObjectId } from 'mongodb';
+
+function isValidObjectId(id: string | null | undefined): boolean {
+  if (!id || typeof id !== 'string') {
+    return false;
+  }
+  return ObjectId.isValid(id) && id.length === 24;
+}
+
 export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
+
+    if (!isValidObjectId(order.eventId)) {
+      throw new Error('Invalid eventId');
+    }
+    if (!isValidObjectId(order.buyerId)) {
+      throw new Error('Invalid buyerId');
+    }
     
     const newOrder = await Order.create({
       ...order,
-      event: order.eventId,
-      buyer: order.buyerId,
+      event: new ObjectId(order.eventId),
+      buyer: new ObjectId(order.buyerId),
     });
 
     return JSON.parse(JSON.stringify(newOrder));
@@ -121,11 +136,14 @@ export async function getOrdersByUser({ userId, limit = 3, page }: GetOrdersByUs
   try {
     await connectToDatabase()
 
-    const skipAmount = (Number(page) - 1) * limit
-    const conditions = { buyer: userId }
+    if (!isValidObjectId(userId)) {
+      throw new Error('Invalid userId');
+    }
 
-    const orders = await Order.distinct('event._id')
-      .find(conditions)
+    const skipAmount = (Number(page) - 1) * limit
+    const conditions = { buyer: new ObjectId(userId as string) }
+
+    const orders = await Order.find(conditions)
       .sort({ createdAt: 'desc' })
       .skip(skipAmount)
       .limit(limit)
@@ -139,7 +157,7 @@ export async function getOrdersByUser({ userId, limit = 3, page }: GetOrdersByUs
         },
       })
 
-    const ordersCount = await Order.distinct('event._id').countDocuments(conditions)
+    const ordersCount = await Order.countDocuments(conditions)
 
     return { data: JSON.parse(JSON.stringify(orders)), totalPages: Math.ceil(ordersCount / limit) }
   } catch (error) {
